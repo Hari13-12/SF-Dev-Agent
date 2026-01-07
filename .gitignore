@@ -1,0 +1,54 @@
+# =====================
+# Node / Frontend
+# =====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.next/
+dist/
+build/
+.vite/
+coverage/
+
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.env
+.venv/
+venv/
+myenv/
+.env.*
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+
+# =====================
+# Logs
+# =====================
+*.log
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =====================
+# Database / Runtime
+# =====================
+*.sqlite3
+*.db
+
+# =====================
+# LangGraph / AI artifacts (optional)
+#

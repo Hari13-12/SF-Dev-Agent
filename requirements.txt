@@ -6,3 +6,11 @@ langchain-community
 faiss-cpu
 langchain-huggingface
 sentence-transformers
+fastapi
+uvicorn[standard]
+pydantic_settings
+SQLAlchemy
+pymysql
+sqlalchemy[asyncio] 
+aiomysql
+asyncpg

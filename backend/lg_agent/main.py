@@ -12,5 +12,5 @@ def main(user_query: str):
     
 if __name__ == "__main__":
     # main("Create a new custom object called City with fields Location and Area")
-    # main("Hello")
-    main("alter a new field in meter reading object with fied name as house number")
+    main("Hello")
+    # main("alter a new field in meter reading object with fied name as house number")

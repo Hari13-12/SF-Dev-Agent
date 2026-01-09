@@ -1,5 +1,5 @@
 from lg_agent.core.state_model import State
-from lg_agent.core.llm_manager import LLMManger as LLMManager
+from lg_agent.core.llm_manager import LLMManager as LLMManager
 
 def create_new_object(state: State):
     print("New Object Creation Node")

@@ -1,6 +1,7 @@
 from lg_agent.core.state_model import State
-from lg_agent.core.llm_manager import LLMManger as LLMManager
+from lg_agent.core.llm_manager import LLMManager
 import json
+
 
 def intent_classifier(state: State):
     print("Intent Classifier Node")
@@ -59,13 +60,12 @@ Output Format:
 """
     # system_prompt = SystemMessage(content=prompt)
     # input_message = HumanMessage(content=user_query)
-    llm = LLMManager()
+    llm = LLMManager().get_llm()
     # response = llm.invoke([system_prompt, input_message])
-    response = llm.invoke(prompt+state["messages"][-1].content)
+    response = llm.invoke(prompt + state["messages"][-1].content)
     response_content = response.content.replace("```json", "").replace("```", "")
     response_content = json.loads(response_content)
     print("Intent Classifier Response: ", response_content)
     state["intent"] = response_content["intent"]
     # state["obj_name"] = response_content["object_name"]
     return state
-

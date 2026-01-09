@@ -17,5 +17,5 @@ asyncpg
 ag-ui-langgraph
 copilotkit
 langgraph-checkpoint
-
-
+langchain-mcp-adapters
+mcp-server-git

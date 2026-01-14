@@ -13,11 +13,19 @@ a6 = "AIzaSyDKH7_dq9uR8fKP0Yu1J6nsXbdOjrD3f80"
 a7 = "AIzaSyCudIv14Sl3ijNdgzkInT0Gby527Blk4LY"
 a8 = "AIzaSyCAETZwYpW-iX1S9KYMCGlYNWgg9rKYR5Q"
 a9 = "AIzaSyCTWQx7GYaqj0jNMsDP-kchMFXpER_QPe0"
-
-
+a10 = "AIzaSyAwpRQ68ffQ33wT5cYYgv18Ux-dvOPFNPM"
+a11 = "AIzaSyD7TkK_8KM71wP-1T6xZ3e4gFB9E6MC2jI"
+a12 = "AIzaSyC9Lyhbc9s6MeWBs9X2QPD6dzIpAYUYmL4"
+a13 = "AIzaSyC7P5I83jQ9TwJRdfQOi3C0dRrzncuTU4E"
+a14 = "AIzaSyC3vqGfzm8H4EzePBUWa3Iufyts8NujLfw"
+a15= "AIzaSyDGTNYYPoFxbz_wt4-BDnFyHKc9b-4g0b8"
+a16 = "AIzaSyBdyNzTErw27FLzz7P7oK7xKW7ZnRI6LRU"
+a17 = "AIzaSyAYmHZ_OqWzlSOgNqE4v-fbbVs54wNUwOc"
+a18 = "AIzaSyAt-CrjvnzRJ4Y1by2fwn-5jrfDfP_TyNE"
+a19 = "AIzaSyDPvYUtK1ycxyH6_yBs0cN2RLLdedrbeWo"
 class LLMManager:
     def __init__(self):
-        self.llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash", api_key=a9)
+        self.llm = ChatGoogleGenerativeAI(model="models/gemini-2.5-flash", api_key=a19)
 
     def get_llm(self):
         return self.llm

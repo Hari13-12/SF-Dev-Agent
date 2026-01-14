@@ -1,12 +1,11 @@
-from lg_agent.core.llm_manager import LLMManager
-from langchain_core.messages import AIMessage
-from langchain_core.messages import SystemMessage
+# lg_agent/workflow/assistant_node.py
 
-def assistant(state):
-    llm = LLMManager().get_llm()
-    print("Assistant Node")
-   
-    prompt = """
+from langchain_core.messages import SystemMessage
+from lg_agent.core.llm_manager import LLMManager
+from lg_agent.core.state_model import State
+
+def create_assistant_node(mcp_tools):
+    system_prompt = """
 You are a multi-capability development assistant with two strictly separated domains:
 1. Salesforce metadata development
 2. File accessing 
@@ -63,19 +62,32 @@ If the user request is NOT:
 Respond with EXACTLY this sentence and nothing else:
 "I am not capable of it."
 
+DEFAULT SALESFORCE PROJECT DIRECTORY:
+D:/Shi-SF-Agent/saleforce-Agent/org_2/force-app/main/default/objects
+
+If a Salesforce operation is requested and no directory is specified,
+always use the DEFAULT SALESFORCE PROJECT DIRECTORY.
+Do NOT ask clarifying questions.
+
+
 AVAILABLE TOOLS:
 {tools}
-    """
-    
-    # if state["intent"] == "general":
-    #     response = llm.invoke(prompt + state["messages"][-1].content)
-    #     return {"messages": response}
-    # response = llm.invoke([SystemMessage(content=prompt)] + state["messages"])
-   
-    response = llm.invoke(
-        [SystemMessage(content=prompt)] + state["messages"]
-    )
-    print(response)
-    return {
+"""
+
+    llm = LLMManager().get_llm()
+
+    if mcp_tools:
+        llm = llm.bind_tools(mcp_tools)
+        tools_json = [
+            tool.model_dump_json(include=["name", "description"])
+            for tool in mcp_tools
+        ]
+        system_prompt += "\n\nAVAILABLE TOOLS:\n" + "\n".join(tools_json)
+
+    def assistant(state: State) -> State:
+        response = llm.invoke([SystemMessage(content=system_prompt)] + state["messages"])
+        return {
         "messages": state["messages"] + [response]
     }
+
+    return assistant

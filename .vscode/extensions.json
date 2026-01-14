@@ -1,3 +1,5 @@
 {
-    "recommendations": []
+    "recommendations": [
+        "cweijan.dbclient-jdbc"
+    ]
 }

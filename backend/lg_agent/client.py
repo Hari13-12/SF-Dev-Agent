@@ -71,67 +71,32 @@ async def get_mcp_client():
         # }
     # }
     {
-    "weather": {
-        "transport": "stdio",
-      "command": "uv",
-      "args": [
-        "--directory",
-        "C:/Users/lenovo/Desktop/Weather_MCP/weather",
-        "run",
-        "weather.py"
-      ]
-    }
-}
+    # "weather": {
+    #     "transport": "stdio",
+    #   "command": "uv",
+    #   "args": [
+    #     "--directory",
+    #     "C:/Users/lenovo/Desktop/Weather_MCP/weather",
+    #     "run",
+    #     "weather.py"
+    #   ]
+    # }
+
+		"salesforce": {
+			"command": "npx",
+            "transport": "stdio",
+			"args": [
+				"-y",
+				"@salesforce/mcp",
+				"--orgs",
+				"DEFAULT_TARGET_ORG",
+				"--toolsets",
+				"all"
+			]
+		}
+	}
         )
     return mcp_client
-
-# async def client_input(user_input: str):
-#     """
-#     Initialize the MCP client and run the agent conversation loop.
-
-#     The MultiServerMCPClient allows connection to multiple MCP servers using a single client and config.
-#     """
-#     try:
-#         print("User_input", user_input)
-#         client = await get_mcp_client()
-#         print("User_input", user_input)
-#         # Get tools and build graph
-#         tools = await client.get_tools()
-#         print("User_input", user_input)
-#         graph = await build_agent_graph(tools=tools)
-#         print("TOOLS", tools)
-#         print("User_input", user_input)
-#         # Pass a config with a thread_id to use memory
-#         graph_config = {
-#             "configurable": {
-#                 "thread_id": "2"
-#             }
-#         }
-#         print("User_input", user_input)
-#         # Collect all response chunks
-#         # try:
-#         #     full_response = ""
-#         #     async for response in stream_graph_response(
-#         #         input=State(messages=[HumanMessage(content=user_input)]),
-#         #         graph=graph, 
-#         #         config=graph_config
-#         # ):
-#         #         full_response += str(response)
-#         #         print("FULL RESPONSE\n", full_response)
-#         #         return full_response
-#         try:
-#             input_message = [HumanMessage(content=user_input)]
-#             output_message = graph.ainvoke({'messages': input_message}, config=graph_config)
-
-#             for m in output_message['messages']:
-#                 m.pretty_print()
-#         except Exception as e:
-#             print(f"Error in client_input: {str(e)}")
-#     except Exception as e:
-#         print("\n🔥 REAL ERROR TRACEBACK 🔥")
-#         print(traceback.format_exc())
-#         raise
-        
 
 
 async def client_input(user_input: str):
@@ -139,6 +104,8 @@ async def client_input(user_input: str):
         client = await get_mcp_client()
 
         tools = await client.get_tools()
+        print(type(tools))
+        print("MCP TOOLS", tools)
         graph = await build_agent_graph(tools=tools)
 
         graph_config = {
@@ -167,10 +134,13 @@ async def client_input(user_input: str):
 if __name__ == "__main__":
 
     import asyncio
-    asyncio.run(client_input("who are you?"))
+    # asyncio.run(client_input("who are you?"))
     # asyncio.run(client_input("Alter the backgorund color to purple"))
     # asyncio.run(client_input("what are the files present in the directory"))
     # asyncio.run(client_input("write a file named test.txt with greetings message"))
     # asyncio.run(client_input("create a new object named Mall with fields area and location"))
 
     # asyncio.run(client_input("What are the active weather alerts in Texas?"))
+    # asyncio.run(client_input("how many objects i have in my org"))
+    # asyncio.run(client_input("give the object names present in my org"))
+    asyncio.run(client_input("what are the accounts connected to my org"))

@@ -86,6 +86,14 @@ If the user request is NOT:
 Respond with EXACTLY this sentence and nothing else:
 "I am not capable of it."
 
+DEFAULT SALESFORCE PROJECT DIRECTORY:
+D:/Shi-SF-Agent/saleforce-Agent/org_2/force-app/main/default/objects
+
+If a Salesforce operation is requested and no directory is specified,
+always use the DEFAULT SALESFORCE PROJECT DIRECTORY.
+Do NOT ask clarifying questions.
+
+
 AVAILABLE TOOLS:
 {tools}
 """

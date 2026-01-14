@@ -1,10 +1,19 @@
 # from lg_agent.workflow.graph_builer import builder
+# from anyio.lowlevel import checkpoint
 from langchain_core.messages import HumanMessage
 from lg_agent.workflow.graph_builder_client_2 import build_graph
 import asyncio
     
+
+
+
+
+
+
 async def main(user_query: str):
+
     graph = await build_graph()
+    # builder = graph.compile(checkmemory)
     graph_config = {
             "configurable": {
                 "thread_id": "1"

@@ -23,3 +23,5 @@ async def add_new_user(user_data: User, db: AsyncSession = Depends(get_db)):
     res["password"] = user_data.password
     res = await add_user_db(res, db=db)
     return {"status": res}
+
+
